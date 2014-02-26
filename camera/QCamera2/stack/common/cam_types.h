@@ -83,6 +83,7 @@
 #define MAX_ROI 5
 #define MAX_STREAM_NUM_IN_BUNDLE 4
 #define MAX_NUM_STREAMS          8
+#define MAX_TEST_PATTERN_CNT     8
 #define CHROMATIX_SIZE 21292
 #define COMMONCHROMATIX_SIZE 42044
 #define AFTUNE_SIZE 4100  //sizeof(actuator_driver_params_t) + sizeof(af_algo_tune_parms_t)
@@ -1296,6 +1297,7 @@ typedef enum {
     CAM_INTF_PARM_ISP_DEBUG_MASK,
     /* Indicates streams ID of all the requested buffers */
     CAM_INTF_META_STREAM_ID,
+    CAM_INTF_META_TEST_PATTERN_DATA,
     CAM_INTF_PARM_FOCUS_BRACKETING,
     CAM_INTF_PARM_FLASH_BRACKETING,
     CAM_INTF_PARM_GET_IMG_PROP,
@@ -1659,5 +1661,21 @@ typedef enum {
     CAM_FOCUS_APPROXIMATE,
     CAM_FOCUS_CALIBRATED
 } cam_focus_calibration_t;
+
+typedef enum {
+    CAM_TEST_PATTERN_OFF,
+    CAM_TEST_PATTERN_SOLID_COLOR,
+    CAM_TEST_PATTERN_COLOR_BARS,
+    CAM_TEST_PATTERN_COLOR_BARS_FADE_TO_GRAY,
+    CAM_TEST_PATTERN_PN9,
+} cam_test_pattern_mode_t;
+
+typedef struct {
+    cam_test_pattern_mode_t mode;
+    int32_t r;
+    int32_t gr;
+    int32_t gb;
+    int32_t b;
+} cam_test_pattern_data_t;
 
 #endif /* __QCAMERA_TYPES_H__ */

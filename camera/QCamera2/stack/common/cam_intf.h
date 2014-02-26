@@ -295,6 +295,9 @@ typedef struct{
     cam_rational_type_t base_gain_factor;    /* sensor base gain factor */
 
     uint8_t focus_dist_calibrated;
+
+    uint8_t supported_test_pattern_modes_cnt;
+    cam_test_pattern_mode_t supported_test_pattern_modes[MAX_TEST_PATTERN_CNT];
     /* AF Bracketing info */
     cam_af_bracketing_t  ubifocus_af_bracketing_need;
     /* opti Zoom info */
@@ -540,6 +543,7 @@ typedef union {
     INCLUDE(CAM_INTF_META_TONEMAP_CURVE_RED,        cam_tonemap_curve_t,         1);
     INCLUDE(CAM_INTF_META_TONEMAP_MODE,             uint8_t,                     1);
     INCLUDE(CAM_INTF_META_FLASH_MODE,               uint8_t,                     1);
+    INCLUDE(CAM_INTF_META_TEST_PATTERN_DATA,        cam_test_pattern_data_t,     1);
     INCLUDE(CAM_INTF_PARM_STATS_DEBUG_MASK,         uint32_t,                    1);
     INCLUDE(CAM_INTF_PARM_ALGO_OPTIMIZATIONS_MASK,  uint32_t,                    1);
     INCLUDE(CAM_INTF_PARM_ISP_DEBUG_MASK,           uint32_t,                    1);
@@ -599,7 +603,8 @@ typedef union {
     INCLUDE(CAM_INTF_META_STATS_HISTOGRAM_MODE,       uint8_t,                     1);
     INCLUDE(CAM_INTF_META_STATS_SHARPNESS_MAP_MODE,   uint8_t,                     1);
     INCLUDE(CAM_INTF_META_STATS_SHARPNESS_MAP,        cam_sharpness_map_t,         3);
-    INCLUDE(CAM_INTF_META_ASD_HDR_SCENE_DATA,      cam_asd_hdr_scene_data_t,       1);
+    INCLUDE(CAM_INTF_META_ASD_HDR_SCENE_DATA,         cam_asd_hdr_scene_data_t,    1);
+    INCLUDE(CAM_INTF_META_TEST_PATTERN_DATA,          cam_test_pattern_data_t,     1);
     INCLUDE(CAM_INTF_META_PRIVATE_DATA,               char,                        MAX_METADATA_PAYLOAD_SIZE);
 
 } metadata_type_t;
