@@ -533,6 +533,7 @@ typedef enum {
     CAM_EFFECT_MODE_MAX
 } cam_effect_mode_type;
 
+// Flash
 typedef enum {
     CAM_FLASH_MODE_OFF,
     CAM_FLASH_MODE_AUTO,
@@ -540,6 +541,31 @@ typedef enum {
     CAM_FLASH_MODE_TORCH,
     CAM_FLASH_MODE_MAX
 } cam_flash_mode_t;
+
+// Flash States
+typedef enum {
+    CAM_FLASH_STATE_UNAVAILABLE,
+    CAM_FLASH_STATE_CHARGING,
+    CAM_FLASH_STATE_READY,
+    CAM_FLASH_STATE_FIRED,
+    CAM_FLASH_STATE_PARTIAL,
+    CAM_FLASH_STATE_MAX
+} cam_flash_state_t;
+
+typedef enum {
+    CAM_FLASH_FIRING_LEVEL_0,
+    CAM_FLASH_FIRING_LEVEL_1,
+    CAM_FLASH_FIRING_LEVEL_2,
+    CAM_FLASH_FIRING_LEVEL_3,
+    CAM_FLASH_FIRING_LEVEL_4,
+    CAM_FLASH_FIRING_LEVEL_5,
+    CAM_FLASH_FIRING_LEVEL_6,
+    CAM_FLASH_FIRING_LEVEL_7,
+    CAM_FLASH_FIRING_LEVEL_8,
+    CAM_FLASH_FIRING_LEVEL_9,
+    CAM_FLASH_FIRING_LEVEL_10,
+    CAM_FLASH_FIRING_LEVEL_MAX
+} cam_flash_firing_level_t;
 
 typedef enum {
     CAM_AEC_TRIGGER_IDLE,
@@ -560,6 +586,23 @@ typedef enum {
     CAM_AE_STATE_FLASH_REQUIRED,
     CAM_AE_STATE_PRECAPTURE
 } cam_ae_state_t;
+
+typedef enum {
+    CAM_LENS_SHADING_MAP_MODE_OFF,
+    CAM_LENS_SHADING_MAP_MODE_ON,
+} cam_lens_shading_map_mode_t;
+
+typedef enum {
+    CAM_LENS_SHADING_MODE_OFF,
+    CAM_LENS_SHADING_MODE_FAST,
+    CAM_LENS_SHADING_MODE_HIGH_QUALITY,
+} cam_lens_shading_mode_t;
+
+typedef enum {
+    CAM_FACE_DETECT_MODE_OFF,
+    CAM_FACE_DETECT_MODE_SIMPLE,
+    CAM_FACE_DETECT_MODE_FULL,
+} cam_face_detect_mode_t;
 
 typedef enum {
   CAM_CDS_MODE_OFF,
