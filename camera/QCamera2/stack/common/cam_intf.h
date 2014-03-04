@@ -293,6 +293,8 @@ typedef struct{
     uint8_t flash_available;
 
     cam_rational_type_t base_gain_factor;    /* sensor base gain factor */
+
+    uint8_t focus_dist_calibrated;
     /* AF Bracketing info */
     cam_af_bracketing_t  ubifocus_af_bracketing_need;
     /* opti Zoom info */
