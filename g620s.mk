@@ -179,6 +179,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     keystore.msm8916
 
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8916
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     librs_jni
