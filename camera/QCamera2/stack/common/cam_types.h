@@ -1094,6 +1094,15 @@ typedef  struct {
 #define TUNING_CAC_DATA_OFFSET     (TUNING_SENSOR_DATA_MAX + \
                                     TUNING_VFE_DATA_MAX + TUNING_CPP_DATA_MAX)
 
+typedef struct {
+    uint32_t tuning_data_version;
+    uint32_t tuning_sensor_data_size;
+    uint32_t tuning_vfe_data_size;
+    uint32_t tuning_cpp_data_size;
+    uint32_t tuning_cac_data_size;
+    uint8_t  data[TUNING_DATA_MAX];
+}tuning_params_t;
+
 typedef enum {
     CAM_INTF_PARM_HAL_VERSION,
     /* common between HAL1 and HAL3 */

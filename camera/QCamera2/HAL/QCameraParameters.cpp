@@ -8136,7 +8136,7 @@ int32_t QCameraParameters::updateRAW(cam_dimension_t max_dim)
     cam_dimension_t raw_dim;
 
     if (max_dim.width == 0 || max_dim.height == 0) {
-        max_dim = m_pCapability->raw_dim[0];
+        max_dim = m_pCapability->raw_dim;
     }
 
     if(initBatchUpdate(m_pParamBuf) < 0 ) {
@@ -8180,7 +8180,7 @@ int32_t QCameraParameters::updateRAW(cam_dimension_t max_dim)
     CDBG_HIGH("%s : RAW Dimension = %d X %d",__func__,raw_dim.width,raw_dim.height);
     if (raw_dim.width == 0 || raw_dim.height == 0) {
         ALOGE("%s: Error getting RAW size. Setting to Capability value",__func__);
-        raw_dim = m_pCapability->raw_dim[0];
+        raw_dim = m_pCapability->raw_dim;
     }
     setRawSize(raw_dim);
     return rc;
