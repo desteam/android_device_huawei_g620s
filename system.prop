@@ -92,3 +92,6 @@ ro.config.hw_camera_mfd=true
 persist.camera.longshot.enable=true
 ro.config.camerarc=true
 persist.camera.pip.support=0
+
+# prop: Increase large font cache size from 512 to 2048
+ro.hwui.text_large_cache_height=2048

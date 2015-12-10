@@ -105,7 +105,6 @@ TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_g620s.c
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mass_storage
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.selinux=permissive
@@ -117,7 +116,8 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
 TARGET_KERNEL_CONFIG := g620s_defconfig
 TARGET_SELINUX_CONFIG := g620s_defconfig
-BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
+BOARD_DTBTOOL_ARGS := -2
+TARGET_KERNEL_ARCH := arm
 
 # Partitions
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -128,7 +128,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BOOTIMAGE_PARTITION_SIZE := 20971520
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1879048192
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 4513037312
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 4513020928  # Reduce userdata image size by 16K/Fix encryption after factory reset 
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 
@@ -145,10 +145,12 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
 
 # Time services
-BOARD_USES_QC_TIME_SERVICES := true
+# BOARD_USES_QC_TIME_SERVICES := true
 
 # Liblight
 TARGET_PROVIDES_LIBLIGHT := true
+# BOARD_HAVE_MULTI_COLOR_LED := true
+# BOARD_HAVE_GENERIC_BLN := true
 
 # Logging
 TARGET_USES_LOGD := false
@@ -173,9 +175,16 @@ BOARD_SEPOLICY_UNION += \
     file.te \
     file_contexts \
     init.te \
+    mediaserver.te \
     mm-qcamerad.te \
     mpdecision.te \
     netd.te \
+    property.te \
+    property_contexts \
+    service.te \
+    service_contexts \
+    system_app.te \
+    timekeep.te \
     system_server.te
 
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
